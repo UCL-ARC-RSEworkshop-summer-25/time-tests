@@ -20,6 +20,14 @@ def compute_overlap_time(range1, range2):
             overlap_time.append((low, high))
     return overlap_time
 
+
+# def compute_noverlap_time(range1, range2):
+#     noverlap_time = []
+#     for start1, end1 in range1:
+#         for start2, end2 in range2:
+#             low = min(start1, start2)
+#             high = 
+
 if __name__ == "__main__":
     large = time_range("2010-01-12 10:00:00", "2010-01-12 12:00:00")
     short = time_range("2010-01-12 10:30:00", "2010-01-12 10:45:00", 2, 60)
