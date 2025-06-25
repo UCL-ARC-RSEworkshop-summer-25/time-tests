@@ -4,13 +4,25 @@ def time_range(start_time, end_time, number_of_intervals=1, gap_between_interval
     start_time_s = datetime.datetime.strptime(start_time, "%Y-%m-%d %H:%M:%S")
     end_time_s = datetime.datetime.strptime(end_time, "%Y-%m-%d %H:%M:%S")
     if start_time_s > end_time_s:
-        raise ValueError("the end time is ahead of the start time")
-     
-    d = (end_time_s - start_time_s).total_seconds() / number_of_intervals + gap_between_intervals_s * (1 / number_of_intervals - 1)
-    sec_range = [(start_time_s + datetime.timedelta(seconds=i * d + i * gap_between_intervals_s),
-                  start_time_s + datetime.timedelta(seconds=(i + 1) * d + i * gap_between_intervals_s))
-                 for i in range(number_of_intervals)]
-    return [(ta.strftime("%Y-%m-%d %H:%M:%S"), tb.strftime("%Y-%m-%d %H:%M:%S")) for ta, tb in sec_range]
+        raise ValueError("Start time must be before end time")
+    d = (
+        end_time_s - start_time_s
+    ).total_seconds() / number_of_intervals + gap_between_intervals_s * (
+        1 / number_of_intervals - 1
+    )
+    sec_range = [
+        (
+            start_time_s
+            + datetime.timedelta(seconds=i * d + i * gap_between_intervals_s),
+            start_time_s
+            + datetime.timedelta(seconds=(i + 1) * d + i * gap_between_intervals_s),
+        )
+        for i in range(number_of_intervals)
+    ]
+    return [
+        (ta.strftime("%Y-%m-%d %H:%M:%S"), tb.strftime("%Y-%m-%d %H:%M:%S"))
+        for ta, tb in sec_range
+    ]
 
 
 
