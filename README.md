@@ -33,8 +33,8 @@ uv add --dev pytest
 > `"2025-01-01 00:02:00", "2025-01-01 00:12:00", 4, 120`.  
 > And the `compute_overlap_time` should provide:
 > ```python
-> [('2020-01-01 00:02:00', '2020-01-01 00:03:00'),  # first interval
->  ('2020-01-01 00:08:00', '2020-01-01 00:09:00')]  # second interval 
+> [('2025-01-01 00:02:00', '2025-01-01 00:03:00'),  # first interval
+>  ('2025-01-01 00:08:00', '2025-01-01 00:09:00')]  # second interval 
 > ```
 
 ## Step 2: Writing a unit test
