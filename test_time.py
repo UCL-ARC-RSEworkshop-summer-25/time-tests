@@ -1,4 +1,5 @@
 from times import time_range, compute_overlap_time
+from pytest import raises
 
 def test_given_input():
     large = time_range("2010-01-12 10:00:00", "2010-01-12 12:00:00")
@@ -31,3 +32,7 @@ def test_edge_case():
     result = compute_overlap_time(first, second)
     expected = []
     assert result == expected
+
+def test_start_ends():
+    with raises(ValueError, match = r"Start time must be before end time"):
+        time_range("2025-01-01 00:01:00", "2025-01-01 00:00:00")
