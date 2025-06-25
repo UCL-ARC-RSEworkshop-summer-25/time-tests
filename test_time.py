@@ -17,17 +17,17 @@ def test_no_overlap():
     assert result == expected
 
 def test_multi_intervals():
-    large = time_range("2025-06-25 00:00:00", "2025-06-25 00:11:00", 2, 60)
+    large = time_range("2025-01-01 00:00:00", "2025-01-01 00:11:00", 2, 60)
     short = time_range("2025-01-01 00:02:00", "2025-01-01 00:12:00", 4, 120)
     result = compute_overlap_time(large, short)
     print(result)
-    expected = [('2020-01-01 00:02:00', '2020-01-01 00:03:00'),
-                ('2020-01-01 00:08:00', '2020-01-01 00:09:00')] 
+    expected = [('2025-01-01 00:02:00', '2025-01-01 00:03:00'),
+                ('2025-01-01 00:08:00', '2025-01-01 00:09:00')] 
     assert result == expected
 
 def test_edge_case():
     first = time_range("2025-06-25 00:00:00", "2025-06-25 00:11:00")
     second = time_range("2025-06-25 00:11:00", "2025-06-25 00:22:00")
     result = compute_overlap_time(first, second)
-    expected = [("2025-06-25 00:11:00")]
+    expected = []
     assert result == expected
